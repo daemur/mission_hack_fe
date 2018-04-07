@@ -1,6 +1,6 @@
 <template>
-	<div>
-		Hi this is a test route
+	<div class="container">
+		Test route
 		
 	</div>
 </template>

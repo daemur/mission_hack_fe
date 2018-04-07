@@ -1,34 +1,41 @@
 <template>
-	<div>
-		This is inventory list
-		<p class="is-capitalized">{{recipeName}}</p>
+	<container-box :box-title="recipeName">
 		<inventory-item 
-			v-for="(object,i) in sampleItemArray" 
+			v-for="(object,i) in recipe" 
 			:item-name="object.item" 
 			:key="i" 
 			:class="{'has-text-primary': !object.optional}">
 		</inventory-item>
-	</div>
+	</container-box>
 </template>
 
 <script type="text/javascript">
 import InventoryItem from './InventoryItem'
+import {api} from '@/api-url'
+
 export default {
 	name: 'inventory-list',
 	data() {
 		return {
 			recipeName: 'sample recipe name',
-			// This array will be replaced by data 
-			sampleItemArray: [
-				{item: 'Test Item 1',
-                 optional: false},
-                {item: 'Test Item 2',
-	             optional: true}
-	        ]
+	        recipe: []
 		}
 	},
 	components: {
 		[InventoryItem.name]: InventoryItem
+	},
+	created() {
+		api.get('/recipes/Test%20Recipe')
+		.then(response => {
+	      this.recipe = response.data;
+	      this.$notify({
+          group: 'success',
+          text: 'Success message'
+        });
+	    })
+	    .catch(e => {
+	      console.log(e)
+	    })
 	}
 
 	// need a GET request to fetch all needed items

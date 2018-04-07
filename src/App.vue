@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    
+    <notifications group="success" position="top center" classes="is-success" width="60%"/>
+    <notifications group="warning" position="top center" classes="is-warning" width="60%"/>
     <router-view/>
   </div>
 </template>

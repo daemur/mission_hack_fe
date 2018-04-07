@@ -23,6 +23,11 @@ export default new Router({
     	path: '/inventory',
     	name: 'inventory-check',
     	component: InventoryCheck
+    },
+    {
+    	path: '/instructions',
+    	name: 'instructions',
+    	component: Test
     }
   ]
 })
