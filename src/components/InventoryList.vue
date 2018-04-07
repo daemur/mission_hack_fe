@@ -6,7 +6,8 @@
 				v-for="(object,i) in recipe.requirements" 
 				:item-name="object.item" 
 				:key="i" 
-				:class="{'has-text-primary': !object.optional}">
+				:class="{'has-text-primary': !object.optional}"
+				:found="object.found">
 			</inventory-item>
 		</container-box>
 	</div>
@@ -27,17 +28,44 @@ export default {
 		[InventoryItem.name]: InventoryItem
 	},
 	created() {
-		api.get('/recipes/Test%20Recipe')
-		.then(response => {
-	      this.recipe = response.data;
-	      this.$notify({
-          group: 'success',
-          text: 'Success message'
-        });
-	    })
+		// setInterval(this.getInventoryStatus, 3000)
+		// setInterval(this.alertFoundAll, 3000)
+		this.getInventoryStatus();
+	},
+	methods: {
+		getInventoryStatus() {
+			api.get('/recipes/Test%20Recipe')
+			.then(response => {
+		      this.recipe = response.data;
+		    })
 	    .catch(e => {
 	      console.log(e)
 	    })
+		},
+
+		enableStep() {
+			if (this.allItemsFound) {
+				return this.$emit('allFound', true)
+			}
+		}
+	},
+
+	computed: {
+		allItemsFound() {
+			let itemList = this.recipe.requirements
+			let foundCount = 0
+			for (let i = 0; i < itemList.length; i++) {
+					if (itemList[i].found) {
+						foundCount++
+					}
+				}
+			if (foundCount == itemList.length) {
+				return true
+			}
+			else {
+				return false
+			}
+		}
 	}
 
 	// need a GET request to fetch all needed items

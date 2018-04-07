@@ -8,8 +8,14 @@ import axios from 'axios'
 import Notifications from 'vue-notification'
 import Button from './components/Button'
 import ContainerBox from './components/ContainerBox'
+import Icon from 'vue-awesome/components/Icon'
+import 'vue-awesome/icons'
+import ButtonRoute from './components/ButtonRoute'
 
+Vue.component('app-icon', Icon)
 Vue.component('app-btn', Button)
+Vue.component('app-btn-route', ButtonRoute)
+
 Vue.component('container-box', ContainerBox)
 Vue.config.productionTip = false
 Vue.use(Notifications)
