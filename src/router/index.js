@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Test from '@/components/Test'
 import InventoryCheck from '@/components/InventoryCheck'
-
+import Steps from '@/components/Steps'
 Vue.use(Router)
 
 export default new Router({
@@ -25,9 +25,10 @@ export default new Router({
     	component: InventoryCheck
     },
     {
-    	path: '/instructions',
-    	name: 'instructions',
-    	component: Test
+    	path: '/steps/:step_id',
+    	name: 'steps',
+    	component: Steps,
+      props: true
     }
   ]
 })

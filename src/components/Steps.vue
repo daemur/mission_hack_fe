@@ -6,28 +6,27 @@
 					<main-display></main-display>
 				</div>
 				<div class="column is-4">
-					<inventory-list></inventory-list>
+					<step-list></step-list>
 				</div>
 
 			</div>
+			<!-- TODO: specify step id -->
 			<app-btn name="Next Step" toRoute="steps"></app-btn>
 		</div>
 	</div>
-	
 </template>
 
 <script type="text/javascript">
-import InventoryList from './InventoryList'
 import MainDisplay from './MainDisplay'
+import StepDisplay from './StepDisplay'
+import StepList from './StepList'
 
 export default {
+	name: 'steps-container',
 	components: {
-		[InventoryList.name]: InventoryList,
+		[StepDisplay.name]: StepDisplay,
+		[StepList.name]: StepList,
 		[MainDisplay.name]: MainDisplay
 	}
 }
 </script>
-
-<style type="text/css">
-
-</style>

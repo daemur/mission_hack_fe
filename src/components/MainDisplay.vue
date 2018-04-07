@@ -14,7 +14,6 @@ export default {
 		[MessageDisplay.name]: MessageDisplay,
 		[CameraDisplay.name]: CameraDisplay
 	}
-
 }
 </script>
 

@@ -1,12 +1,15 @@
 <template>
-	<container-box :box-title="recipeName">
-		<inventory-item 
-			v-for="(object,i) in recipe" 
-			:item-name="object.item" 
-			:key="i" 
-			:class="{'has-text-primary': !object.optional}">
-		</inventory-item>
-	</container-box>
+	<div>
+		<!-- <p>{{recipe.steps[0]}}</p> -->
+		<container-box :box-title="recipe.name">
+			<inventory-item 
+				v-for="(object,i) in recipe.requirements" 
+				:item-name="object.item" 
+				:key="i" 
+				:class="{'has-text-primary': !object.optional}">
+			</inventory-item>
+		</container-box>
+	</div>
 </template>
 
 <script type="text/javascript">
@@ -17,8 +20,7 @@ export default {
 	name: 'inventory-list',
 	data() {
 		return {
-			recipeName: 'sample recipe name',
-	        recipe: []
+	    recipe: {}
 		}
 	},
 	components: {
