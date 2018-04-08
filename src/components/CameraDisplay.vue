@@ -1,10 +1,10 @@
 <template>
-	<container-box box-title="">
-		<video width="700" height="420" controls>
-		  <source src="movie.mp4"
+	<div class="box">
+		<video width="700" height="560" controls>
+		  <source src="../assets/echo-hereweare.mp4"
 		  		  type='video/mp4;codecs="avc1.42E01E, mp4a.40.2"'>
 		</video>
-	</container-box>
+	</div>
 </template>
 
 <script type="text/javascript">

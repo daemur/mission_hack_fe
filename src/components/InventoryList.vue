@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<!-- <p>{{recipe.steps[0]}}</p> -->
-		<container-box :box-title="recipe.name">
+		<div class="box" id="container-box">
+			<h3 class="title">{{recipe.name}}</h3>
 			<inventory-item 
 				v-for="(object,i) in recipe.requirements" 
 				:item-name="object.item" 
@@ -9,7 +10,7 @@
 				:class="{'has-text-primary': !object.optional}"
 				:found="object.found">
 			</inventory-item>
-		</container-box>
+		</div>
 	</div>
 </template>
 
@@ -80,5 +81,7 @@ export default {
 </script>
 
 <style scoped>
-
+#container-box {
+	height: 610px;
+}
 </style>
