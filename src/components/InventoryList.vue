@@ -29,7 +29,10 @@ export default {
 		[InventoryItem.name]: InventoryItem
 	},
 	created() {
-		setInterval(this.getInventoryStatus, 3000)
+		let refreshFoundList = setInterval(this.getInventoryStatus, 3000);
+		if (this.allItemsFound) {
+			clearInverval(refreshFoundList)
+		}
 		// this.getInventoryStatus();
 	},
 	updated() {
