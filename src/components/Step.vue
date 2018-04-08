@@ -6,12 +6,16 @@
 					<main-display></main-display>
 				</div>
 				<div class="column is-4">
-					<step-list :step-title="step.name"></step-list>
+					<step v-for="(step,i) in allSteps" 
+						:step-title="step.name"
+						:step-item="step.item"
+						:is-completed="step.completed"
+						:is-current="i == step_id"
+						:key="i"></step>
 				</div>
 
 			</div>
-			<!-- TODO: specify step id -->
-			<!-- <app-btn-route name="Next Step" toRoute="step"></app-btn-route> -->
+			
 			<button class="button is-large" 
 							@click="toPreviousStep"
 							v-show="step_id > 0">Go Back</button>
@@ -28,7 +32,7 @@
 <script type="text/javascript">
 import MainDisplay from './MainDisplay'
 import StepDisplay from './StepDisplay'
-import StepList from './StepList'
+import Step from './StepList'
 import {api} from '@/api-url'
 
 export default {
@@ -36,19 +40,21 @@ export default {
 	props: ['step_id'],
 	components: {
 		[StepDisplay.name]: StepDisplay,
-		[StepList.name]: StepList,
+		[Step.name]: Step,
 		[MainDisplay.name]: MainDisplay
 	},
 	data() {
 		return {
 			step: {},
 			stepsLength: 0,
-			missionDone: false
+			missionDone: false,
+			allSteps: []
 			// currentStepIndex: 0
 		}
 	},
 	created() {
 		this.getCurrentStep(this.step_id)
+		// this.getStepsInfo()
 		// this.getStepsLength()
 	},
 	
@@ -75,6 +81,7 @@ export default {
 			api.get('/recipes/Test%20Recipe')
 			.then(response => {
 				this.stepsLength = response.data.steps.length
+				this.allSteps = response.data.steps
 				// this.currentStepIndex = response.data.currentStep
 			})
 		},
