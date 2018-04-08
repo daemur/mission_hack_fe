@@ -77,7 +77,7 @@ export default {
 			let nextStep = Number(this.step_id) + 1;
 			this.$router.push({name: 'step', params: {step_id: nextStep}})
 			this.getCurrentStep(nextStep)
-			this.allSteps.splice(this.step_id, 1);
+			// this.allSteps.splice(this.step_id, 1);
 
 		},
 		getCurrentStep(index) {
