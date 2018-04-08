@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<button :disabled="isDisabled" class="button is-large" @click="changeRoute">{{name}}</button>
+		<button :disabled="isDisabled" class="button is-rounded is-large" @click="changeRoute">{{name}}</button>
 	</div>
 </template>
 

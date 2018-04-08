@@ -18,22 +18,20 @@
 import InventoryItem from './InventoryItem'
 import {api} from '@/api-url'
 
+// const refreshFoundList;
+
 export default {
 	name: 'inventory-list',
 	data() {
 		return {
-	    recipe: {}
+	    	recipe: {}
 		}
 	},
 	components: {
 		[InventoryItem.name]: InventoryItem
 	},
 	created() {
-		let refreshFoundList = setInterval(this.getInventoryStatus, 3000);
-		if (this.allItemsFound) {
-			clearInverval(refreshFoundList)
-		}
-		// this.getInventoryStatus();
+		setInterval(this.getInventoryStatus, 3000);
 	},
 	updated() {
 		if (this.allItemsFound) {
@@ -41,17 +39,18 @@ export default {
 				group: 'success',
 				text: 'You have found all items!'
 			})
+			clearInverval(setInterval(this.getInventoryStatus, 3000))
 		}
 	},
 	methods: {
 		getInventoryStatus() {
-			api.get('/recipes/Test%20Recipe')
+			api.get('/recipes/Birdhouse')
 			.then(response => {
 		      this.recipe = response.data;
 		    })
-	    .catch(e => {
-	      console.log(e)
-	    })
+		    .catch(e => {
+		      console.log(e)
+		    })
 		},
 
 		enableStep() {

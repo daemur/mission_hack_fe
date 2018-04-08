@@ -10,7 +10,7 @@
 				</div>
 
 			</div>
-			<app-btn-route name="Next Step" toRoute="step" :isDisabled="buttonIsDisabled" :step-id="0"></app-btn-route>
+			<app-btn-route name="Next Step" toRoute="step" :step-id="0"></app-btn-route>
 		</div>
 	</div>
 	

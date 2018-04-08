@@ -24,12 +24,21 @@
 
 <script type="text/javascript">
 import Button from './Button.vue'
+import {api} from '@/api-url'
+
 export default {
 	name: 'search-bar',
 	data() {
 		return {
 			input: '',
+			recipeNameArray: []
 		}
+	},
+	created() {
+		// api.get('/recipes')
+		// .then(response => {
+			
+		// })
 	},
 	components: {
 		[Button.name]: Button

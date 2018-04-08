@@ -1,7 +1,7 @@
 <template>
   <div class="section">
       <div class="container has-text-centered">
-        {{ title }}
+        <h1 class="title is-1 has-text-weight-bold">{{title}}</h1>
         <search-bar></search-bar>
       </div>
   </div>
@@ -13,7 +13,7 @@ export default {
   name: 'home',
   data () {
     return {
-      title: 'Hi this is our Mission Hack app'
+      title: 'BuildAR'
     }
   },
   components: {

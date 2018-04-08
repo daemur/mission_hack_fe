@@ -63,9 +63,9 @@ export default {
 		// this.getStepsInfo()
 		// this.getStepsLength()
 	},
-	mounted() {
-		this.getCurrentArray(this.step_id)
-	},
+	// mounted() {
+	// 	this.getCurrentArray(this.step_id)
+	// },
 	
 	methods: {
 		toPreviousStep(){
@@ -89,7 +89,7 @@ export default {
 			});
 		},
 		getStepsInfo() {
-			api.get('/recipes/Test%20Recipe')
+			api.get('/recipes/Birdhouse')
 			.then(response => {
 				this.stepsLength = response.data.steps.length
 				this.allSteps = response.data.steps
@@ -104,25 +104,25 @@ export default {
 				this.$router.push({name: 'test'})
 			})
 		},
-		getCurrentArray(i) {
+		// getCurrentArray(i) {
 			
-			if (i > 0 && i < this.allSteps.length - 1) {
-				this.currentArray.push(this.allSteps[i-1])
-				this.currentArray.push(this.allSteps[i])
-				this.currentArray.push(this.allSteps[i+1])
-			}
-			else if (i == 0) {
-				this.currentArray.push(this.allSteps[i])
-				this.currentArray.push(this.allSteps[i+1])
-				this.currentArray.push(this.allSteps[i+2])
-			}
-			else if (i == this.allSteps.length - 1) {
-				this.currentArray.push(this.allSteps[i])
-				this.currentArray.push(this.allSteps[i-1])
-				this.currentArray.push(this.allSteps[i-2])
-			}
-			return this.currentArray;
-		}
+		// 	if (i > 0 && i < this.allSteps.length - 1) {
+		// 		this.currentArray.push(this.allSteps[i-1])
+		// 		this.currentArray.push(this.allSteps[i])
+		// 		this.currentArray.push(this.allSteps[i+1])
+		// 	}
+		// 	else if (i == 0) {
+		// 		this.currentArray.push(this.allSteps[i])
+		// 		this.currentArray.push(this.allSteps[i+1])
+		// 		this.currentArray.push(this.allSteps[i+2])
+		// 	}
+		// 	else if (i == this.allSteps.length - 1) {
+		// 		this.currentArray.push(this.allSteps[i])
+		// 		this.currentArray.push(this.allSteps[i-1])
+		// 		this.currentArray.push(this.allSteps[i-2])
+		// 	}
+		// 	return this.currentArray;
+		// }
 	},
 
 	computed: {
