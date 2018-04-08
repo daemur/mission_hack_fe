@@ -4,7 +4,7 @@
 		<h3 class="title is-5">{{stepTitle}} 
 			<app-icon v-if="isCompleted" name="check" class="has-text-success"></app-icon>
 		</h3>
-		<p>{{stepItem}}</p>
+		<p v-for="i in stepItem">{{i}}</p>
 		<!-- <p>Completed? {{isCompleted}}</p> -->
 
 	</div>

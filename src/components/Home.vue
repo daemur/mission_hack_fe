@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-      <div class="container">
+      <div class="container has-text-centered">
         {{ title }}
         <search-bar></search-bar>
       </div>

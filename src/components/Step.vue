@@ -16,13 +16,17 @@
 
 			</div>
 			
-			<button class="button is-large" 
+			<button class="button is-large is-link is-rounded" 
 							@click="toPreviousStep"
-							v-show="step_id > 0">Go Back</button>
-			<button class="button is-large" 
+							v-show="step_id > 0">
+								<app-icon name="arrow-left"></app-icon>
+							</button>
+			<button class="button is-large is-link is-rounded" 
 							@click="toNextStep" 
-							v-if="!stepIsLast">Next Step</button>
-			<button class="button is-large" 
+							v-if="!stepIsLast">
+								<app-icon name="arrow-right"></app-icon>
+							</button>
+			<button class="button is-large is-success is-rounded" 
 							@click="callFinishApi"
 							v-else>Finish</button>
 		</div>

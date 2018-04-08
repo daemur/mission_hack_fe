@@ -18,7 +18,7 @@ export default {
 $hover-shadow: 5px 12px 40px #c3c3c3;
 $new-shadow: 3px 3px 7px #c3c3c3;
 
-$box-shadow: $new-shadow;
+$box-shadow: $hover-shadow;
 $box-padding: 1.5rem;
 $box-link-hover-shadow: $hover-shadow;
 

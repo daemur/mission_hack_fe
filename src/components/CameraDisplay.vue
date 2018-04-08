@@ -1,5 +1,5 @@
 <template>
-	<container-box box-title="Camera Display">
+	<container-box box-title="">
 		<video width="700" height="420" controls>
 		  <source src="movie.mp4" type="video/mp4">
 		</video>

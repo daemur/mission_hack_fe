@@ -28,9 +28,16 @@ export default {
 		[InventoryItem.name]: InventoryItem
 	},
 	created() {
-		// setInterval(this.getInventoryStatus, 3000)
-		// setInterval(this.alertFoundAll, 3000)
-		this.getInventoryStatus();
+		setInterval(this.getInventoryStatus, 3000)
+		// this.getInventoryStatus();
+	},
+	updated() {
+		if (this.allItemsFound) {
+			this.$notify({
+				group: 'success',
+				text: 'You have found all items!'
+			})
+		}
 	},
 	methods: {
 		getInventoryStatus() {
