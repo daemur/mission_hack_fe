@@ -11,17 +11,18 @@
 						:step-item="step.item"
 						:is-completed="step.completed"
 						:is-current="i == step_id"
-						:key="i"></step>
+						:key="i"
+						></step>
 				</div>
 
 			</div>
 			
-			<button class="button is-large is-link is-rounded" 
+			<button class="button is-large is-dark is-rounded" 
 							@click="toPreviousStep"
 							v-show="step_id > 0">
 								<app-icon name="arrow-left"></app-icon>
 							</button>
-			<button class="button is-large is-link is-rounded" 
+			<button class="button is-large is-dark is-rounded" 
 							@click="toNextStep" 
 							v-if="!stepIsLast">
 								<app-icon name="arrow-right"></app-icon>
@@ -52,7 +53,8 @@ export default {
 			step: {},
 			stepsLength: 0,
 			missionDone: false,
-			allSteps: []
+			allSteps: [],
+			currentArray: []
 			// currentStepIndex: 0
 		}
 	},
@@ -60,6 +62,9 @@ export default {
 		this.getCurrentStep(this.step_id)
 		// this.getStepsInfo()
 		// this.getStepsLength()
+	},
+	mounted() {
+		this.getCurrentArray(this.step_id)
 	},
 	
 	methods: {
@@ -72,6 +77,8 @@ export default {
 			let nextStep = Number(this.step_id) + 1;
 			this.$router.push({name: 'step', params: {step_id: nextStep}})
 			this.getCurrentStep(nextStep)
+			this.allSteps.splice(this.step_id, 1);
+
 		},
 		getCurrentStep(index) {
 			// let nextStepId = this.step_id + 1;
@@ -93,17 +100,35 @@ export default {
 			let nextStepId = this.step_id + 1
 			api.get('/step/' + nextStepId)
 			.then(response => {
-				console.log('hey this is finished')
 				this.missionDone = response.data.done
 				this.$router.push({name: 'test'})
 			})
+		},
+		getCurrentArray(i) {
+			
+			if (i > 0 && i < this.allSteps.length - 1) {
+				this.currentArray.push(this.allSteps[i-1])
+				this.currentArray.push(this.allSteps[i])
+				this.currentArray.push(this.allSteps[i+1])
+			}
+			else if (i == 0) {
+				this.currentArray.push(this.allSteps[i])
+				this.currentArray.push(this.allSteps[i+1])
+				this.currentArray.push(this.allSteps[i+2])
+			}
+			else if (i == this.allSteps.length - 1) {
+				this.currentArray.push(this.allSteps[i])
+				this.currentArray.push(this.allSteps[i-1])
+				this.currentArray.push(this.allSteps[i-2])
+			}
+			return this.currentArray;
 		}
 	},
 
 	computed: {
 		stepIsLast() {
 			return (this.step_id == this.stepsLength - 1);
-		}
+		},
 	}
 }
 </script>

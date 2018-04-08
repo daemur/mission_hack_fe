@@ -12,9 +12,9 @@
 	  		<div class="control">
 	  			<app-btn name="Search" toRoute="inventory-check"></app-btn>
 	  		</div>
-	  		<div class="control">
+	  		<!-- <div class="control">
 		  		<app-btn name="Camera" toRoute="test"></app-btn>
-	  		</div>
+	  		</div> -->
 	  	</div>
 	  	
 	  </div>
